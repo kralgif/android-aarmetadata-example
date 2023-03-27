@@ -25,6 +25,6 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
       - uses: android-actions/setup-android@v2
-      - run: ./mylib/gradlew --project-dir=./mylib/gradlew :mylib:publishReleasePublicationToMavenLocal
+      - run: ./mylib/gradlew --project-dir=./mylib/ :mylib:publishReleasePublicationToMavenLocal
       - run: echo 'myproj.agpVersion=${{ matrix.agpVersion }}' >> ./appproj/defs.properties
-      - run: ./appproj/gradlew --project-dir=./appproj/gradlew :app:assemble
+      - run: ./appproj/gradlew --project-dir=./appproj/ :app:assemble
