@@ -8,6 +8,7 @@ env:
 jobs:
   mytest:
     strategy:
+      fail-fast: false # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstrategyfail-fast
       matrix:
         agpVersion:
           - '3.5.0'
