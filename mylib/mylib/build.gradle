@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+group = 'com.example.android.mytesthoge'
+version = '20230327-SNAPSHOT'
+
+android {
+    namespace 'com.example.android.mylib'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 16
+        targetSdk 33
+        consumerProguardFiles "consumer-rules.pro"
+
+        aarMetadata {
+            minAgpVersion '3.6.0'
+            minCompileSdk 30
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+            }
+            debug(MavenPublication) {
+                from components.debug
+            }
+        }
+    }
+}

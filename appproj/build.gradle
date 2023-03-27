@@ -1,0 +1,28 @@
+import java.nio.file.Paths
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        def defProps = new Properties()
+        defProps.load(file(Paths.get(buildscript.sourceFile.parentFile.absolutePath, 'defs.properties')).newDataInputStream())
+
+        classpath "com.android.tools.build:gradle:${defProps.get('myproj.agpVersion')}"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        mavenLocal()
+    }
+}
+
+wrapper {
+    distributionType = 'all'
+}
